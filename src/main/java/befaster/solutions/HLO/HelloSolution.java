@@ -9,4 +9,3 @@ public class HelloSolution {
 	  return helloMsg.helloVal(friendVal); 
    }
 }
-
