@@ -4,11 +4,12 @@ interface HelloInterface {
 	String helloVal(String friendName);
 }
 public class HelloSolution {
-   HelloInterface helloMsg = x -> {return ("Hello "+ x);};
+   HelloInterface helloMsg = x -> {return ("Hello, World!");};
    public String hello(String friendVal){
 	  return helloMsg.helloVal(friendVal); 
    }
 }
+
 
 
 
