@@ -1,13 +1,14 @@
 package befaster.solutions.HLO;
 
 interface HelloInterface {
-	String hello(String friendName);
+	String helloVal(String friendName);
 }
 public class HelloSolution {
    HelloInterface helloMsg = x -> {return ("Hello "+ x);};
-   String hello(String friendVal){
-	  return helloMsg.hello(friendVal); 
+   public String hello(String friendVal){
+	  return helloMsg.helloVal(friendVal); 
    }
 }
+
 
 
