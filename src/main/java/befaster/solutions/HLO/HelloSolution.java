@@ -10,4 +10,3 @@ public class HelloSolution {
     	System.out.println(helloMsg);
     }
 }
-
