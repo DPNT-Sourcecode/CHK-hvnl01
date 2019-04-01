@@ -36,6 +36,7 @@ public class CheckoutSolution {
       int countE =map.get('E') != null ? map.get('E') :0;
       int countF =map.get('F') != null ? map.get('F') :0;
       
+      //Count item A
       if(countA%5 !=0  ) {
       	int quo= countA/5;
           int rem= countA%5;
@@ -53,11 +54,12 @@ public class CheckoutSolution {
           }
           aPrice= (quo*200)+ remVal;
       }else {
-    	  if(countA>=5  && countA%5 ==0  ) {
-              aPrice=(countA/5)*200;
+    	if(countA>=5  && countA%5 ==0  ) {
+          aPrice=(countA/5)*200;
         }
       }
 
+    //Count item B
       if(countB<2) {
         bPrice=countB*30;
       }else {
@@ -70,14 +72,16 @@ public class CheckoutSolution {
           bPrice= (quo*45)+ rem*30;
         }
       }
-      
+
+    //Count item E
       if(countE>=2){
     	  countB= countB-(countE/2);
     	  if(countB<0){
     		  countB=0;
     	  }
       }
-      
+
+    //Count item F
       if(countF%2!=0){
          countF = countF-(countF/2);
       }else {
@@ -95,4 +99,5 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
