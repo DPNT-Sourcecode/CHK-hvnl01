@@ -1,7 +1,7 @@
 package befaster.solutions.CHK;
 
 interface CheckoutInterface {
-	int checkOut(String... val);
+	int checkOut(String val);
 }
 
 public class CheckoutSolution {
@@ -10,15 +10,7 @@ public class CheckoutSolution {
 		int countA=0;
 		int countB=0;
 		int total=0;
-	for (String y : x ) {
-	if (y.equals("A")) countA++;
-	if (y.equals("B")) countB++;
-	}
 	
-	for (String z : x ) {
-	if (z.equals("C")) total+=20;
-	if (z.equals("D")) total+=15;
-	}
 	int aPrice=0;
 	if(countA>0){
 	if(countA<3){aPrice=countA*50;}
@@ -58,3 +50,4 @@ public class CheckoutSolution {
        return msg.checkOut(skus);
     }
 }
+
