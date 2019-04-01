@@ -69,6 +69,3 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
-
-
-
