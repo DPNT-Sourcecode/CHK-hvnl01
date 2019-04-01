@@ -28,7 +28,7 @@ public class CheckoutSolution {
 		aPrice= (quo*130)+ rem*50;
 	}
 	total+=aPrice;
-	
+	}
 	int bPrice=0;
 	if(countB>0){
 		if(countB<2){bPrice=countB*30;}
@@ -47,5 +47,6 @@ public class CheckoutSolution {
        return msg.checkOut(skus);
     }
 }
+
 
 
