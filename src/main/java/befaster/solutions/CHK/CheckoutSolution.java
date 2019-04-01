@@ -14,7 +14,7 @@ public class CheckoutSolution {
     int aPrice=0;
     int bPrice=0;
     int ePrice=0;
-    
+    int	remVal=0;
     String regex = "^[A-E]+$";
     boolean match = Pattern.matches(regex,x);
     if(match || x.length()==0){
@@ -34,17 +34,46 @@ public class CheckoutSolution {
       int countC = map.get('C') !=null ? map.get('C'):0;
       int countD =map.get('D') != null ? map.get('D') :0;
       int countE =map.get('E') != null ? map.get('E') :0;
-      if(countA<3){
+      /*if(countA<3){
         aPrice=countA*50;
       } else {
-        if(countA>=3 && countA%3 ==0) {
-          aPrice=(countA/3)*130;
+        if(countA>=5  && countA%5 ==0  ) {
+          aPrice=(countA/5)*200;
         }
-        if(countA>3 && countA%3!=0) {
+        if(countA>5  && countA%5 !=0  ) {
+        	int quo= countA/5;
+            int rem= countA%5;
+            if(rem < 3) {
+              remVal= rem*50;
+            }else {
+              if(rem==3){
+                remVal=130;
+              }
+              if(rem==4){
+                remVal=130+50;
+              }
+            }
+            aPrice= (quo*200)+ remVal;
+        }
+        if(countA>3 && countA%3!=0 && countA<5 ) {
           int quo= countA/3;
           int rem= countA%3;
           aPrice= (quo*130)+ rem*50;
         }
+      }*/
+      if(countA%5 !=0  ) {
+      	int quo= countA/5;
+          int rem= countA%5;
+          if(rem < 3) {
+            remVal= rem*50;
+          }else {
+             if(rem>3 && rem%3!=0) {
+                int quo2= countA/3;
+                int rem2= countA%3;
+                remVal= (quo2*130)+ rem2*50;
+              }
+          }
+          aPrice= (quo*200)+ remVal;
       }
 
       if(countB<2) {
@@ -84,3 +113,4 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
