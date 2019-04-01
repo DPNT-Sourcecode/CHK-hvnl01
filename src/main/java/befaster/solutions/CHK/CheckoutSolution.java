@@ -19,7 +19,8 @@ public class CheckoutSolution {
 	else if (x.equals("D")) total+=15;
 	}
 	int aPrice=0;
-	if(countA ==1 ){total +=50;}
+	if(countA%3 ==0){aPrice=(countA/3)*130;}
+	 
 	
 	return total;
 	};
@@ -27,3 +28,4 @@ public class CheckoutSolution {
        return msg.checkOut(skus);
     }
 }
+
