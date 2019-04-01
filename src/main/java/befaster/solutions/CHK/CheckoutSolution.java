@@ -42,11 +42,22 @@ public class CheckoutSolution {
 	
 	total+=bPrice;
 	}
+	
+	int blackList=0;
+	for(String p : x){
+		if(!(p.equals("A")||p.equals("B")||p.equals("C")||p.equals("D"))){
+			blackList++;
+		}
+	}
+	if(blackList>0){
+		total=-1;
+	}
 	return total;
 	};
     public int checkout(String skus) {
        return msg.checkOut(skus);
     }
 }
+
 
 
