@@ -44,11 +44,11 @@ public class CheckoutSolution {
 	}
 	
 	int blackList=0;
-	for(String p : x){
+	/*for(String p : x){
 		if(!(p.equals("A")||p.equals("B")||p.equals("C")||p.equals("D")||p.equals(""))){
 			blackList++;
 		}
-	}
+	}*/
 	if(blackList>0){
 		total=-1;
 	}
@@ -58,3 +58,4 @@ public class CheckoutSolution {
        return msg.checkOut(skus);
     }
 }
+
