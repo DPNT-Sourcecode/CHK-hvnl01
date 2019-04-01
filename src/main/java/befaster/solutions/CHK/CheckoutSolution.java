@@ -77,6 +77,10 @@ public class CheckoutSolution {
              }
           }
           aPrice= (quo*200)+ remVal;
+      }else {
+    	  if(countA>=5  && countA%5 ==0  ) {
+              aPrice=(countA/5)*200;
+        }
       }
 
       if(countB<2) {
@@ -116,5 +120,6 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
 
