@@ -15,7 +15,7 @@ public class CheckoutSolution {
     int bPrice=0;
     int ePrice=0;
     int	remVal=0;
-    String regex = "^[A-F]+$";
+    String regex = "^[A-Z]+$";
     boolean match = Pattern.matches(regex,x);
     if(match || x.length()==0){
       HashMap<Character, Integer> map = new HashMap<Character, Integer>();
@@ -35,6 +35,26 @@ public class CheckoutSolution {
       int countD =map.get('D') != null ? map.get('D') :0;
       int countE =map.get('E') != null ? map.get('E') :0;
       int countF =map.get('F') != null ? map.get('F') :0;
+      int countG = map.get('G') !=null ? map.get('G'):0;
+      int countH =map.get('H') != null ? map.get('H') :0;
+      int countI = map.get('I') !=null ? map.get('I'):0;
+      int countJ =map.get('J') != null ? map.get('J') :0;
+      int countK =map.get('K') != null ? map.get('K') :0;
+      int countL =map.get('L') != null ? map.get('L') :0;
+      int countM = map.get('M') !=null ? map.get('M'):0;
+      int countN =map.get('N') != null ? map.get('N') :0;
+      int countO = map.get('O') !=null ? map.get('O'):0;
+      int countP =map.get('P') != null ? map.get('P') :0;
+      int countQ =map.get('Q') != null ? map.get('Q') :0;
+      int countR =map.get('R') != null ? map.get('R') :0;
+      int countS = map.get('S') !=null ? map.get('S'):0;
+      int countT =map.get('T') != null ? map.get('T') :0;
+      int countU = map.get('U') !=null ? map.get('U'):0;
+      int countV =map.get('V') != null ? map.get('V') :0;
+      int countW =map.get('W') != null ? map.get('W') :0;
+      int countX =map.get('X') != null ? map.get('X') :0;
+      int countY =map.get('Y') != null ? map.get('Y') :0;
+      int countZ =map.get('Z') != null ? map.get('Z') :0;
       
       //Count item A
       if(countA%5 !=0  ) {
@@ -99,5 +119,6 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
 
