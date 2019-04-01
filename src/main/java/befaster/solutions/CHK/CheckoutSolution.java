@@ -14,7 +14,7 @@ public class CheckoutSolution {
     int aPrice=0;
     int bPrice=0;
     
-    String regex = "^[A-D]+$";
+    String regex = "^[A-E]+$";
     boolean match = Pattern.matches(regex,x);
     if(match || x.length()==0){
       HashMap<Character, Integer> map = new HashMap<Character, Integer>();
@@ -32,6 +32,7 @@ public class CheckoutSolution {
       int countB =map.get('B') != null ? map.get('B') :0;
       int countC = map.get('C') !=null ? map.get('C'):0;
       int countD =map.get('D') != null ? map.get('D') :0;
+      int countE =map.get('E') != null ? map.get('E') :0;
       if(countA<3){
         aPrice=countA*50;
       } else {
@@ -69,3 +70,4 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
