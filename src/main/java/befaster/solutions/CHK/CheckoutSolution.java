@@ -5,11 +5,11 @@ interface CheckoutInterface {
 }
 
 public class CheckoutSolution {
-	int countA=0;
-	int countB=0;
-	int total=0;
-	CheckoutInterface msg = (x) -> {
 	
+	CheckoutInterface msg = (x) -> {
+		int countA=0;
+		int countB=0;
+		int total=0;
 	for (String y : x ) {
 	if (y.equals("A")) countA++;
 	if (y.equals("B")) countB++;
@@ -48,4 +48,5 @@ public class CheckoutSolution {
        return msg.checkOut(skus);
     }
 }
+
 
