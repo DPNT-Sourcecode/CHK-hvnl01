@@ -35,18 +35,7 @@ public class CheckoutSolution {
       int countD =map.get('D') != null ? map.get('D') :0;
       int countE =map.get('E') != null ? map.get('E') :0;
       int countF =map.get('F') != null ? map.get('F') :0;
-      if(countE>=2){
-    	  countB= countB-(countE/2);
-    	  if(countB<0){
-    		  countB=0;
-    	  }
-      }
-      if(countF%2!=0){
-         countF = countF-(countF/2);
-      }
-      if(countF%2==0){
-          countF = countF-(countF/3);
-       }
+      
       if(countA%5 !=0  ) {
       	int quo= countA/5;
           int rem= countA%5;
@@ -82,6 +71,19 @@ public class CheckoutSolution {
         }
       }
       
+      if(countE>=2){
+    	  countB= countB-(countE/2);
+    	  if(countB<0){
+    		  countB=0;
+    	  }
+      }
+      
+      if(countF%2!=0){
+         countF = countF-(countF/2);
+      }else {
+          countF = countF-(countF/3);
+       }
+      
       total = aPrice + bPrice + countC*20 + countD*15+ countE*40+ countF*10;
       return total;
     } else {
@@ -93,3 +95,4 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
