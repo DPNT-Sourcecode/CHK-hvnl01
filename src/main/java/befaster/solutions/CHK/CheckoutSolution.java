@@ -13,6 +13,7 @@ public class CheckoutSolution {
     int total=0;
     int aPrice=0;
     int bPrice=0;
+    
     String regex = "^[A-D]+$";
     boolean match = Pattern.matches(regex,x);
     if(match){
@@ -26,9 +27,11 @@ public class CheckoutSolution {
           map.put(c, 1);
         }
       }
-
-      int countA= map.get('A');
-      int countB=map.get('B');
+      
+      int countA = map.get('A') !=null ? map.get('A'):0;
+      int countB =map.get('B') != null ? map.get('B') :0;
+      int countC = map.get('C') !=null ? map.get('C'):0;
+      int countD =map.get('D') != null ? map.get('D') :0;
       if(map.get('A')<3){
         aPrice=countA*50;
       } else {
@@ -55,7 +58,7 @@ public class CheckoutSolution {
         }
       }
 
-      total = aPrice + bPrice + map.get('C')*30 + map.get('D')*40;
+      total = aPrice + bPrice + countC*30 + countD*40;
       return total;
     } else {
       return -1;  
@@ -66,3 +69,4 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
