@@ -41,11 +41,11 @@ public class CheckoutSolution {
     		  countB=0;
     	  }
       }
-      if(countF>2 && countF%2!=0){
+      if(countF%2!=0){
          countF = countF-(countF/2);
       }
-      if(countF>2 && countF%2==0){
-          countF = countF-(countF/2)/2;
+      if(countF%2==0){
+          countF = countF-(countF/3);
        }
       if(countA%5 !=0  ) {
       	int quo= countA/5;
@@ -93,6 +93,7 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
 
 
