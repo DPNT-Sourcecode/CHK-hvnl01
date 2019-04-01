@@ -15,7 +15,7 @@ public class CheckoutSolution {
     int bPrice=0;
     int ePrice=0;
     int	remVal=0;
-    String regex = "^[A-E]+$";
+    String regex = "^[A-F]+$";
     boolean match = Pattern.matches(regex,x);
     if(match || x.length()==0){
       HashMap<Character, Integer> map = new HashMap<Character, Integer>();
@@ -34,39 +34,16 @@ public class CheckoutSolution {
       int countC = map.get('C') !=null ? map.get('C'):0;
       int countD =map.get('D') != null ? map.get('D') :0;
       int countE =map.get('E') != null ? map.get('E') :0;
+      int countF =map.get('F') != null ? map.get('F') :0;
       if(countE>=2){
     	  countB= countB-(countE/2);
     	  if(countB<0){
     		  countB=0;
     	  }
       }
-      /*if(countA<3){
-        aPrice=countA*50;
-      } else {
-        if(countA>=5  && countA%5 ==0  ) {
-          aPrice=(countA/5)*200;
-        }
-        if(countA>5  && countA%5 !=0  ) {
-        	int quo= countA/5;
-            int rem= countA%5;
-            if(rem < 3) {
-              remVal= rem*50;
-            }else {
-              if(rem==3){
-                remVal=130;
-              }
-              if(rem==4){
-                remVal=130+50;
-              }
-            }
-            aPrice= (quo*200)+ remVal;
-        }
-        if(countA>3 && countA%3!=0 && countA<5 ) {
-          int quo= countA/3;
-          int rem= countA%3;
-          aPrice= (quo*130)+ rem*50;
-        }
-      }*/
+      if(countF>=2){
+         countF = countF-(countF/2);
+      }
       if(countA%5 !=0  ) {
       	int quo= countA/5;
           int rem= countA%5;
@@ -102,20 +79,7 @@ public class CheckoutSolution {
         }
       }
       
-     /* if(countE<2) {
-          ePrice=countE*40;
-        }else {
-          if(countE >=2 && countE%2 ==0){
-            ePrice=(countE/2)*50;
-          }
-          if(countE>2 && countE%2!=0) {
-            int quo= countE/2;
-            int rem= countE%2;
-            ePrice= (quo*50)+ rem*40;
-          }
-        }*/
-
-      total = aPrice + bPrice + countC*20 + countD*15+ countE*40;
+      total = aPrice + bPrice + countC*20 + countD*15+ countE*40+ countF*10;
       return total;
     } else {
       return -1;  
@@ -126,3 +90,4 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
