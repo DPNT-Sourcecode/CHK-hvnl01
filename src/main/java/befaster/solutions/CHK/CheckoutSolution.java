@@ -16,7 +16,7 @@ public class CheckoutSolution {
     
     String regex = "^[A-D]+$";
     boolean match = Pattern.matches(regex,x);
-    if(match){
+    if(match || x.length()==0){
       HashMap<Character, Integer> map = new HashMap<Character, Integer>();
       for(int i = 0; i< x.length(); i++){
         char c = x.charAt(i);
@@ -58,7 +58,7 @@ public class CheckoutSolution {
         }
       }
 
-      total = aPrice + bPrice + countC*30 + countD*40;
+      total = aPrice + bPrice + countC*20 + countD*15;
       return total;
     } else {
       return -1;  
@@ -69,5 +69,6 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
 
