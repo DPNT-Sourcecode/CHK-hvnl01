@@ -13,6 +13,7 @@ public class CheckoutSolution {
     int total=0;
     int aPrice=0;
     int bPrice=0;
+    int ePrice=0;
     
     String regex = "^[A-E]+$";
     boolean match = Pattern.matches(regex,x);
@@ -58,8 +59,21 @@ public class CheckoutSolution {
           bPrice= (quo*45)+ rem*30;
         }
       }
+      
+      if(countE<2) {
+          ePrice=countE*40;
+        }else {
+          if(countE >=2 && countE%2 ==0){
+            ePrice=(countE/2)*50;
+          }
+          if(countE>2 && countE%2!=0) {
+            int quo= countE/2;
+            int rem= countE%2;
+            ePrice= (quo*50)+ rem*40;
+          }
+        }
 
-      total = aPrice + bPrice + countC*20 + countD*15;
+      total = aPrice + bPrice + countC*20 + countD*15+ ePrice;
       return total;
     } else {
       return -1;  
@@ -70,4 +84,5 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
