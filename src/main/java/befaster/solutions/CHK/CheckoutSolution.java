@@ -48,7 +48,3 @@ public class CheckoutSolution {
        return msg.checkOut(skus);
     }
 }
-
-
-
-
