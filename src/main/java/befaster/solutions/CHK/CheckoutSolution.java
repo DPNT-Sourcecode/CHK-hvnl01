@@ -68,8 +68,8 @@ public class CheckoutSolution {
             remVal= rem*50;
           }else {
              if(rem>3 && rem%3!=0) {
-                int quo2= countA/3;
-                int rem2= countA%3;
+                int quo2= rem/3;
+                int rem2= rem%3;
                 remVal= (quo2*130)+ rem2*50;
               }
              if(rem==3){
@@ -120,6 +120,7 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
 
 
