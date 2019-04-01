@@ -72,6 +72,9 @@ public class CheckoutSolution {
                 int rem2= countA%3;
                 remVal= (quo2*130)+ rem2*50;
               }
+             if(rem==3){
+               remVal=130;
+             }
           }
           aPrice= (quo*200)+ remVal;
       }
@@ -113,4 +116,5 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
