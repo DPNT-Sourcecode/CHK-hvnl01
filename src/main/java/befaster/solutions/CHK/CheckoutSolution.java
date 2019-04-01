@@ -41,9 +41,9 @@ public class CheckoutSolution {
     		  countB=0;
     	  }
       }
-      if(countF>=2){
+      /*if(countF>=2){
          countF = countF-(countF/2);
-      }
+      }*/
       if(countA%5 !=0  ) {
       	int quo= countA/5;
           int rem= countA%5;
@@ -90,4 +90,5 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
