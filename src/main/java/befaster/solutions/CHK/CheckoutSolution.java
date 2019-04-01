@@ -32,7 +32,7 @@ public class CheckoutSolution {
       int countB =map.get('B') != null ? map.get('B') :0;
       int countC = map.get('C') !=null ? map.get('C'):0;
       int countD =map.get('D') != null ? map.get('D') :0;
-      if(map.get('A')<3){
+      if(countA<3){
         aPrice=countA*50;
       } else {
         if(countA>=3 && countA%3 ==0) {
@@ -69,4 +69,5 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
