@@ -88,8 +88,8 @@ public class CheckoutSolution {
       //Cost of H items :H|10|  5H for 45, 10H for 80
       hPrice=getItemPrice(countH,10,5,45,10,80);
 
-      //Cost of K items: K|80| 2K for 150
-      kPrice=getItemPrice(countK,80,2,150);
+      //Cost of K items: K|70| 2K for 120
+      kPrice=getItemPrice(countK,70,2,120);
 
       //Cost of P item : P|50| 5P for 200
       pPrice=getItemPrice(countP,50,5,200);
@@ -174,3 +174,4 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
