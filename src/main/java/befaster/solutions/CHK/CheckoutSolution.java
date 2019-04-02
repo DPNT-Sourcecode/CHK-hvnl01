@@ -31,7 +31,8 @@ public class CheckoutSolution {
       char[] comb = new char[offerComb.length];
       char[] combThree= new char[3];
       for(char i : offerComb){
-        if(map.get(i)!=0){
+    	  int count =map.get(i) !=null ? map.get(i):0;
+        if(count!=0){
           countComb++;
           comb[j]=i;
           j++;
@@ -198,4 +199,5 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
