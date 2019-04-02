@@ -101,7 +101,7 @@ public class CheckoutSolution {
       vPrice=getItemPrice(countV,50,2,90,3,130);
 
       total = aPrice + bPrice + countC*20 + countD*15+ countE*40+ countF*10+ countG*20+hPrice+ countI*35 + countJ*60+ +kPrice+ countL*90
-          + countM*15 +countN*40+ countO*10 +pPrice+qPrice+ countR*50+countS*20 + countT*20 +countU*40 +vPrice+countW*20 + countX*17 + countY*20 + countZ*50 ;
+          + countM*15 +countN*40+ countO*10 +pPrice+qPrice+ countR*50+countS*20 + countT*20 +countU*40 +vPrice+countW*20 + countX*17 + countY*20 + countZ*21 ;
       return total;
     } else {
       return -1;  
@@ -174,5 +174,6 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
 
 
