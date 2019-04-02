@@ -28,7 +28,7 @@ public class CheckoutSolution {
       
       int countComb=0;
       int j=0;
-      char[] comb = new char[offerComb.length];
+      char[] comb = new char[x.length()];
       char[] combThree= new char[3];
       for(char i : offerComb){
     	  int count =map.get(i) !=null ? map.get(i):0;
@@ -199,11 +199,12 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
   
- /* public static void main(String arg[]){
+ public static void main(String arg[]){
 	  CheckoutSolution v = new CheckoutSolution();
-	  System.out.println(v.checkout("STX"));
-  }*/
+	  System.out.println(v.checkout("STXSTX"));
+  }
 }
+
 
 
 
