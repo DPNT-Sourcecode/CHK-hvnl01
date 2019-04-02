@@ -30,18 +30,17 @@ public class CheckoutSolution {
       int j=0;
       char[] comb = new char[x.length()];
       char[] combThree= new char[3];
-      for(int q=0 ;q<x.length();q++){
-    	  
-    	  int count =map.get(x.charAt(q)) !=null ? map.get(x.charAt(q)):0;
+      for(char i : offerComb){
+    	  int count =map.get(i) !=null ? map.get(i):0;
         if(count!=0){
-          countComb++;
-          comb[j]=x.charAt(q);
+          countComb+=count;
+          comb[j]=i;
           j++;
         }
       }
       
       if(countComb>=3){
-    	  for(int k=0;k<3;k++){
+    	  for(int k=0;k<countComb;k++){
           combThree[k]=comb[k];
     	  }
       
@@ -205,3 +204,4 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXSTX"));
   }
 }
+
