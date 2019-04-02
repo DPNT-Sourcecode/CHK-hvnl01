@@ -31,7 +31,7 @@ public class CheckoutSolution {
           map.put(c, 1);
         }
       }
-      
+
       int countA = map.get('A') !=null ? map.get('A'):0;
       int countB =map.get('B') != null ? map.get('B') :0;
       int countC = map.get('C') !=null ? map.get('C'):0;
@@ -58,145 +58,119 @@ public class CheckoutSolution {
       int countX =map.get('X') != null ? map.get('X') :0;
       int countY =map.get('Y') != null ? map.get('Y') :0;
       int countZ =map.get('Z') != null ? map.get('Z') :0;
-    
+
       //Count item B: for 2E get one B free
       countB=getFreeDeal(countE,2,countB);
-      /*if(countE>=2){
-    	  countB= countB-(countE/2);
-    	  if(countB<0){
-    		  countB=0;
-    	  }
-      }*/
 
-    //Count item F
+
+      //Count item F
       countF=getFreeDeal(countF, 2);
-      /*if(countF%2!=0){
-         countF = countF-(countF/2);
-      }else {
-          countF = countF-(countF/3);
-       }*/
-      
+
+
       // countM : For 3N get one M free
       countM=getFreeDeal(countN,3,countM);
-      /*if(countN>=3){
-    	  countM= countM-(countN/3);
-    	  if(countM<0){
-    		  countM=0;
-    	  }
-      }*/
-      
+
+
       // Count Q : For 3R get one Q free
       countQ=getFreeDeal(countR,3,countQ);
-      /*if(countR>=3){
-    	  countQ= countQ-(countR/3);
-    	  if(countQ<0){
-    		  countQ=0;
-    	  }
-      }*/
-      
+
+
       //Count U: For 3U get one U free
       countU=getFreeDeal(countU, 3);
-      /*if(countU%3!=0){
-         countU = countU-(countU/3);
-      }else {
-          countU = countU-(countU/4);
-       }*/
-      
+
+
       //Cost of item A: A|50| 3A for 130, 5A for 200
       aPrice=getItemPrice(countA,50,3,130,5,200);
-      
+
       //Cost of item B: B|30| 2B for 45 
       bPrice=getItemPrice(countB,30,2,45);
-      
+
       //Cost of H items :H|10|  5H for 45, 10H for 80
       hPrice=getItemPrice(countH,10,5,45,10,80);
-      
+
       //Cost of K items: K|80| 2K for 150
       kPrice=getItemPrice(countK,80,2,150);
-      
+
       //Cost of P item : P|50| 5P for 200
       pPrice=getItemPrice(countP,50,5,200);
-      
+
       //Cost of Q item: Q|30| 3Q for 80
       qPrice=getItemPrice(countQ,30,3,80);
-      
+
       //Cost of V item: V|50|   2V for 90, 3V for 130
       vPrice=getItemPrice(countV,50,2,90,3,130);
-      
+
       total = aPrice + bPrice + countC*20 + countD*15+ countE*40+ countF*10+ countG*20+hPrice+ countI*35 + countJ*60+ +kPrice+ countL*90
-    		  + countM*15 +countN*40+ countO*10 +pPrice+qPrice+ countR*50+countS*30 + countT*20 +countU*40 +vPrice+countW*20 + countX*90 + countY*10 + countZ*50 ;
+          + countM*15 +countN*40+ countO*10 +pPrice+qPrice+ countR*50+countS*30 + countT*20 +countU*40 +vPrice+countW*20 + countX*90 + countY*10 + countZ*50 ;
       return total;
     } else {
       return -1;  
     }
   };
-  
+
   public int getItemPrice(int count,int value,int firstCond, int value1, int secCond, int value2){
-	  int remVal=0;
-	  int price=0;
-	  if(count%secCond !=0  ) {
-      	int quo= count/secCond;
-          int rem= count%secCond;
-          if(rem < firstCond) {
-            remVal= rem*value;
-          }else {
-             if(rem>firstCond && rem%firstCond!=0) {
-                int quo2= rem/firstCond;
-                int rem2= rem%firstCond;
-                remVal= (quo2*value1)+ rem2*value;
-              }
-             if(rem==firstCond){
-               remVal=value1;
-             }
-          }
-          price= (quo*value2)+ remVal;
+    int remVal=0;
+    int price=0;
+    if(count%secCond !=0  ) {
+      int quo= count/secCond;
+      int rem= count%secCond;
+      if(rem < firstCond) {
+        remVal= rem*value;
       }else {
-    	if(count>=secCond  && count%secCond ==0  ) {
-          price=(count/secCond)*value2;
+        if(rem>firstCond && rem%firstCond!=0) {
+          int quo2= rem/firstCond;
+          int rem2= rem%firstCond;
+          remVal= (quo2*value1)+ rem2*value;
+        }
+        if(rem==firstCond){
+          remVal=value1;
         }
       }
-	  return price;
+      price= (quo*value2)+ remVal;
+    }else {
+      if(count>=secCond  && count%secCond ==0  ) {
+        price=(count/secCond)*value2;
+      }
+    }
+    return price;
   }
-  
+
   public int getItemPrice(int count, int value, int firstCond, int value1){
-	  int price =0;
-      if(count<firstCond) {
-          price=count*value;
-        }else {
-          if(count >=firstCond && count%firstCond ==0){
-            price=(count/firstCond)*value1;
-          }
-          if(count>firstCond && count%firstCond!=0) {
-            int quo= count/firstCond;
-            int rem= count%firstCond;
-            price= (quo*value1)+ rem*value;
-          }
-        }
-      return price;
-  }
-  
-  public int getFreeDeal(int count1,int cond, int count2){
-	  if(count1>=cond){
-    	  count2= count2-(count1/cond);
-    	  if(count2<0){
-    		  count2=0;
-    	  }
+    int price =0;
+    if(count<firstCond) {
+      price=count*value;
+    }else {
+      if(count >=firstCond && count%firstCond ==0){
+        price=(count/firstCond)*value1;
       }
-	  return count2;
+      if(count>firstCond && count%firstCond!=0) {
+        int quo= count/firstCond;
+        int rem= count%firstCond;
+        price= (quo*value1)+ rem*value;
+      }
+    }
+    return price;
   }
-  
+
+  public int getFreeDeal(int count1,int cond, int count2){
+    if(count1>=cond){
+      count2= count2-(count1/cond);
+      if(count2<0){
+        count2=0;
+      }
+    }
+    return count2;
+  }
+
   public int getFreeDeal(int count, int cond){
-	  if(count%cond!=0){
-	         count = count-(count/cond);
-	      }else {
-	          count = count-(count/(cond+1));
-	       }
-	  return count;
+    if(count%cond!=0){
+      count = count-(count/cond);
+    }else {
+      count = count-(count/(cond+1));
+    }
+    return count;
   }
   public int checkout(String skus) {
     return value.checkOut(skus);
   }
 }
-
-
-
