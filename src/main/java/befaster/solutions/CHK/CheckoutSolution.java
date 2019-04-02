@@ -58,43 +58,49 @@ public class CheckoutSolution {
       int countX =map.get('X') != null ? map.get('X') :0;
       int countY =map.get('Y') != null ? map.get('Y') :0;
       int countZ =map.get('Z') != null ? map.get('Z') :0;
-    //Count item E
-      if(countE>=2){
+    
+      //Count item B: for 2E get one B free
+      countB=getFreeDeal(countE,2,countB);
+      /*if(countE>=2){
     	  countB= countB-(countE/2);
     	  if(countB<0){
     		  countB=0;
     	  }
-      }
+      }*/
 
     //Count item F
-      if(countF%2!=0){
+      countF=getFreeDeal(countF, 2);
+      /*if(countF%2!=0){
          countF = countF-(countF/2);
       }else {
           countF = countF-(countF/3);
-       }
+       }*/
       
       // countM : For 3N get one M free
-      if(countN>=3){
+      countM=getFreeDeal(countN,3,countM);
+      /*if(countN>=3){
     	  countM= countM-(countN/3);
     	  if(countM<0){
     		  countM=0;
     	  }
-      }
+      }*/
       
       // Count Q : For 3R get one Q free
-      if(countR>=3){
+      countQ=getFreeDeal(countR,3,countQ);
+      /*if(countR>=3){
     	  countQ= countQ-(countR/3);
     	  if(countQ<0){
     		  countQ=0;
     	  }
-      }
+      }*/
       
       //Count U: For 3U get one U free
-      if(countU%3!=0){
+      countU=getFreeDeal(countU, 3);
+      /*if(countU%3!=0){
          countU = countU-(countU/3);
       }else {
           countU = countU-(countU/4);
-       }
+       }*/
       
       //Cost of item A: A|50| 3A for 130, 5A for 200
       aPrice=getItemPrice(countA,50,3,130,5,200);
@@ -167,11 +173,30 @@ public class CheckoutSolution {
           }
         }
       return price;
-	  
+  }
+  
+  public int getFreeDeal(int count1,int cond, int count2){
+	  if(count1>=cond){
+    	  count2= count2-(count1/cond);
+    	  if(count2<0){
+    		  count2=0;
+    	  }
+      }
+	  return count2;
+  }
+  
+  public int getFreeDeal(int count, int cond){
+	  if(count%cond!=0){
+	         count = count-(count/cond);
+	      }else {
+	          count = count-(count/(cond+1));
+	       }
+	  return count;
   }
   public int checkout(String skus) {
     return value.checkOut(skus);
   }
 }
+
 
 
