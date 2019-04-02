@@ -39,7 +39,7 @@ public class CheckoutSolution {
         }
       }
       
-      if(countComb>3){
+      if(countComb>=3){
     	  for(int k=0;k<3;k++){
           combThree[k]=comb[k];
     	  }
@@ -198,6 +198,12 @@ public class CheckoutSolution {
   public int checkout(String skus) {
     return value.checkOut(skus);
   }
+  
+  public static void main(String arg[]){
+	  CheckoutSolution v = new CheckoutSolution();
+	  System.out.println(v.checkout("STX"));
+  }
 }
+
 
 
