@@ -97,8 +97,9 @@ public class CheckoutSolution {
           countU = countU-(countU/4);
        }
       
-      //Count item A
-      if(countA%5 !=0  ) {
+      //Cost of item A: A|50| 3A for 130, 5A for 200
+      aPrice=getItemPrice(countA,50,3,130,5,200);
+      /*if(countA%5 !=0  ) {
       	int quo= countA/5;
           int rem= countA%5;
           if(rem < 3) {
@@ -118,10 +119,11 @@ public class CheckoutSolution {
     	if(countA>=5  && countA%5 ==0  ) {
           aPrice=(countA/5)*200;
         }
-      }
+      }*/
 
-    //Count item B
-      if(countB<2) {
+    //Cost of item B: B|30| 2B for 45 
+      bPrice=getItemPrice(countB,30,2,45);
+      /*if(countB<2) {
         bPrice=countB*30;
       }else {
         if(countB >=2 && countB%2 ==0){
@@ -132,12 +134,13 @@ public class CheckoutSolution {
           int rem= countB%2;
           bPrice= (quo*45)+ rem*30;
         }
-      }
+      }*/
 
     
       
       //Cost of H items :H|10|  5H for 45, 10H for 80
-      if(countH%10 !=0  ) {
+      hPrice=getItemPrice(countH,10,5,45,10,80);
+      /*if(countH%10 !=0  ) {
         	int quo= countH/10;
             int rem= countH%10;
             if(rem < 5) {
@@ -157,10 +160,11 @@ public class CheckoutSolution {
       	if(countH>=10  && countH%10 ==0  ) {
             hPrice=(countH/10)*80;
           }
-        }
+        }*/
       
       //Cost of K items: K|80| 2K for 150
-      if(countK<2) {
+      kPrice=getItemPrice(countK,80,2,150);
+      /*if(countK<2) {
           kPrice=countK*80;
         }else {
           if(countK >=2 && countK%2 ==0){
@@ -171,10 +175,11 @@ public class CheckoutSolution {
             int rem= countK%2;
             kPrice= (quo*150)+ rem*80;
           }
-        }
+        }*/
       
       //Cost of P item : P|50| 5P for 200
-      if(countP<5) {
+      pPrice=getItemPrice(countP,50,5,200);
+      /*if(countP<5) {
           pPrice=countP*50;
         }else {
           if(countP >=5 && countP%5 ==0){
@@ -185,10 +190,11 @@ public class CheckoutSolution {
             int rem= countP%5;
             pPrice= (quo*200)+ rem*50;
           }
-        }
+        }*/
       
       //Cost of Q item: Q|30| 3Q for 80
-      if(countQ<3) {
+      qPrice=getItemPrice(countQ,30,3,80);
+      /*if(countQ<3) {
           qPrice=countQ*30;
         }else {
           if(countQ >=3 && countQ%3 ==0){
@@ -199,10 +205,10 @@ public class CheckoutSolution {
             int rem= countQ%3;
             qPrice= (quo*80)+ rem*30;
           }
-        }
+        }*/
       
       //Cost of V item: V|50|   2V for 90, 3V for 130
-      if(countV%3 !=0  ) {
+     /* if(countV%3 !=0  ) {
         	int quo= countV/3;
             int rem= countV%3;
             if(rem < 2) {
@@ -222,7 +228,8 @@ public class CheckoutSolution {
       	if(countV>=3  && countV%3 ==0  ) {
             vPrice=(countV/3)*130;
           }
-        }
+        }*/
+      vPrice=getItemPrice(countV,50,2,90,3,130);
       
       total = aPrice + bPrice + countC*20 + countD*15+ countE*40+ countF*10+ countG*20+hPrice+ countI*35 + countJ*60+ +kPrice+ countL*90
     		  + countM*15 +countN*40+ countO*10 +pPrice+qPrice+ countR*50+countS*30 + countT*20 +countU*40 +vPrice+countW*20 + countX*90 + countY*10 + countZ*50 ;
@@ -232,10 +239,54 @@ public class CheckoutSolution {
     }
   };
   
- /* public int itemPrice(){
+  //V|50|   2V for 90, 3V for 130
+  public int getItemPrice(int count,int value,int firstCond, int value1, int secCond, int value2){
+	  int remVal=0;
+	  int price=0;
+	  if(count%secCond !=0  ) {
+      	int quo= count/secCond;
+          int rem= count%secCond;
+          if(rem < firstCond) {
+            remVal= rem*value;
+          }else {
+             if(rem>firstCond && rem%firstCond!=0) {
+                int quo2= rem/firstCond;
+                int rem2= rem%firstCond;
+                remVal= (quo2*value1)+ rem2*value;
+              }
+             if(rem==firstCond){
+               remVal=value1;
+             }
+          }
+          price= (quo*value2)+ remVal;
+      }else {
+    	if(count>=secCond  && count%secCond ==0  ) {
+          price=(count/secCond)*value2;
+        }
+      }
+	  return price;
+  }
+  
+  public int getItemPrice(int count, int value, int firstCond, int value1){
+	  int price =0;
+	//Cost of Q item: Q|30| 3Q for 80
+      if(count<firstCond) {
+          price=count*value;
+        }else {
+          if(count >=firstCond && count%firstCond ==0){
+            price=(count/firstCond)*value1;
+          }
+          if(count>firstCond && count%firstCond!=0) {
+            int quo= count/firstCond;
+            int rem= count%firstCond;
+            price= (quo*value1)+ rem*value;
+          }
+        }
+      return price;
 	  
-  }*/
+  }
   public int checkout(String skus) {
     return value.checkOut(skus);
   }
 }
+
