@@ -13,7 +13,11 @@ public class CheckoutSolution {
     int total=0;
     int aPrice=0;
     int bPrice=0;
-    int ePrice=0;
+    int hPrice=0;
+    int kPrice=0;
+    int pPrice=0;
+    int qPrice=0;
+    int vPrice=0;
     int	remVal=0;
     String regex = "^[A-Z]+$";
     boolean match = Pattern.matches(regex,x);
@@ -55,6 +59,43 @@ public class CheckoutSolution {
       int countX =map.get('X') != null ? map.get('X') :0;
       int countY =map.get('Y') != null ? map.get('Y') :0;
       int countZ =map.get('Z') != null ? map.get('Z') :0;
+    //Count item E
+      if(countE>=2){
+    	  countB= countB-(countE/2);
+    	  if(countB<0){
+    		  countB=0;
+    	  }
+      }
+
+    //Count item F
+      if(countF%2!=0){
+         countF = countF-(countF/2);
+      }else {
+          countF = countF-(countF/3);
+       }
+      
+      // countM : For 3N get one M free
+      if(countN>=3){
+    	  countM= countM-(countN/3);
+    	  if(countM<0){
+    		  countM=0;
+    	  }
+      }
+      
+      // Count Q : For 3R get one Q free
+      if(countR>=3){
+    	  countQ= countQ-(countR/3);
+    	  if(countQ<0){
+    		  countQ=0;
+    	  }
+      }
+      
+      //Count U: For 3U get one U free
+      if(countU%3!=0){
+         countU = countU-(countU/3);
+      }else {
+          countU = countU-(countU/4);
+       }
       
       //Count item A
       if(countA%5 !=0  ) {
@@ -93,32 +134,108 @@ public class CheckoutSolution {
         }
       }
 
-    //Count item E
-      if(countE>=2){
-    	  countB= countB-(countE/2);
-    	  if(countB<0){
-    		  countB=0;
-    	  }
-      }
-
-    //Count item F
-      if(countF%2!=0){
-         countF = countF-(countF/2);
-      }else {
-          countF = countF-(countF/3);
-       }
+    
       
-      total = aPrice + bPrice + countC*20 + countD*15+ countE*40+ countF*10;
+      //Cost of H items :H|10|  5H for 45, 10H for 80
+      if(countH%10 !=0  ) {
+        	int quo= countH/10;
+            int rem= countH%10;
+            if(rem < 5) {
+              remVal= rem*10;
+            }else {
+               if(rem>5 && rem%5!=0) {
+                  int quo2= rem/5;
+                  int rem2= rem%5;
+                  remVal= (quo2*45)+ rem2*10;
+                }
+               if(rem==5){
+                 remVal=45;
+               }
+            }
+            hPrice= (quo*80)+ remVal;
+        }else {
+      	if(countH>=10  && countH%10 ==0  ) {
+            hPrice=(countH/10)*80;
+          }
+        }
+      
+      //Cost of K items: K|80| 2K for 150
+      if(countK<2) {
+          kPrice=countK*80;
+        }else {
+          if(countK >=2 && countK%2 ==0){
+            kPrice=(countK/2)*150;
+          }
+          if(countK>2 && countK%2!=0) {
+            int quo= countK/2;
+            int rem= countK%2;
+            kPrice= (quo*150)+ rem*80;
+          }
+        }
+      
+      //Cost of P item : P|50| 5P for 200
+      if(countP<5) {
+          pPrice=countK*50;
+        }else {
+          if(countP >=5 && countP%5 ==0){
+            pPrice=(countP/5)*200;
+          }
+          if(countP>5 && countP%5!=0) {
+            int quo= countP/5;
+            int rem= countP%5;
+            pPrice= (quo*200)+ rem*50;
+          }
+        }
+      
+      //Cost of Q item: Q|30| 3Q for 80
+      if(countQ<3) {
+          qPrice=countK*30;
+        }else {
+          if(countQ >=3 && countQ%3 ==0){
+            qPrice=(countQ/3)*80;
+          }
+          if(countQ>3 && countQ%3!=0) {
+            int quo= countQ/3;
+            int rem= countQ%3;
+            qPrice= (quo*80)+ rem*30;
+          }
+        }
+      
+      //Cost of V item: V|50|   2V for 90, 3V for 130
+      if(countV%3 !=0  ) {
+        	int quo= countV/3;
+            int rem= countV%3;
+            if(rem < 2) {
+              remVal= rem*50;
+            }else {
+               if(rem>2 && rem%2!=0) {
+                  int quo2= rem/2;
+                  int rem2= rem%2;
+                  remVal= (quo2*90)+ rem2*50;
+                }
+               if(rem==2){
+                 remVal=90;
+               }
+            }
+            vPrice= (quo*130)+ remVal;
+        }else {
+      	if(countV>=3  && countV%3 ==0  ) {
+            vPrice=(countV/3)*130;
+          }
+        }
+      
+      total = aPrice + bPrice + countC*20 + countD*15+ countE*40+ countF*10+ countG*20+hPrice+ countI*35 + countJ*60+ +kPrice+ countL*90
+    		  + countM*15 +countN*10+ countO*10 +pPrice+qPrice+ countR*50+countS*30 + countT*20 +countU*40 +vPrice+countW*20 + countX*90 + countY*10 + countZ*50 ;
       return total;
     } else {
       return -1;  
     }
   };
-
+  
+ /* public int itemPrice(){
+	  
+  }*/
   public int checkout(String skus) {
     return value.checkOut(skus);
   }
 }
-
-
-
