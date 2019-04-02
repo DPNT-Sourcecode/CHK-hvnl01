@@ -175,7 +175,7 @@ public class CheckoutSolution {
       
       //Cost of P item : P|50| 5P for 200
       if(countP<5) {
-          pPrice=countK*50;
+          pPrice=countP*50;
         }else {
           if(countP >=5 && countP%5 ==0){
             pPrice=(countP/5)*200;
@@ -189,7 +189,7 @@ public class CheckoutSolution {
       
       //Cost of Q item: Q|30| 3Q for 80
       if(countQ<3) {
-          qPrice=countK*30;
+          qPrice=countQ*30;
         }else {
           if(countQ >=3 && countQ%3 ==0){
             qPrice=(countQ/3)*80;
@@ -239,3 +239,4 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
