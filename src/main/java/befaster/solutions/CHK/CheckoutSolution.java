@@ -33,7 +33,6 @@ public class CheckoutSolution {
       int j=0;
       char[] comb = new char[x.length()];
       
-      char[] combThree= new char[3];
       for(char i : offerComb){
     	  int count =map.get(i) !=null ? map.get(i):0;
         if(count!=0){
@@ -206,4 +205,5 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXSTX"));
   }
 }
+
 
