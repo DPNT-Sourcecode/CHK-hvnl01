@@ -199,11 +199,12 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
   
-  public static void main(String arg[]){
+ /* public static void main(String arg[]){
 	  CheckoutSolution v = new CheckoutSolution();
 	  System.out.println(v.checkout("STX"));
-  }
+  }*/
 }
+
 
 
 
