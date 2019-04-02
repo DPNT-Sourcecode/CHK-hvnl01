@@ -1,6 +1,8 @@
 package befaster.solutions.CHK;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Pattern;
 
 interface CheckoutInterface {
@@ -11,6 +13,7 @@ public class CheckoutSolution {
 
   CheckoutInterface value = (x) -> {
     int total,aPrice,bPrice,hPrice,kPrice,pPrice,qPrice,vPrice,sPrice,tPrice,xPrice,yPrice,zPrice=0;
+    List<Character> list = new ArrayList<Character>();
     char[] offerComb = {'S','T','X','Y','Z'};
     String regex = "^[A-Z]+$";
     boolean match = Pattern.matches(regex,x);
@@ -29,24 +32,23 @@ public class CheckoutSolution {
       int countComb=0;
       int j=0;
       char[] comb = new char[x.length()];
+      
       char[] combThree= new char[3];
       for(char i : offerComb){
     	  int count =map.get(i) !=null ? map.get(i):0;
         if(count!=0){
           countComb+=count;
+          for(int k=0;k<count;k++){
           comb[j]=i;
           j++;
+          }
         }
       }
       
-      if(countComb>=3){
-    	  for(int k=0;k<countComb;k++){
-          combThree[k]=comb[k];
-    	  }
-      
-      for(char l : combThree){
+      if(countComb%3==0){
+        for(char l : comb){
         map.put(l,map.get(l)-1);
-      }
+       }
       }
 
       int countA = map.get('A') !=null ? map.get('A'):0;
@@ -132,8 +134,8 @@ public class CheckoutSolution {
       return -1;  
     }
   };
-
-  public int getItemPrice(int count,int value,int firstCond, int value1, int secCond, int value2){
+  
+ public int getItemPrice(int count,int value,int firstCond, int value1, int secCond, int value2){
     int remVal=0;
     int price=0;
     if(count%secCond !=0  ) {
@@ -204,3 +206,4 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXSTX"));
   }
 }
+
