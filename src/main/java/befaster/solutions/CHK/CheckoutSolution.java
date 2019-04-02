@@ -11,6 +11,7 @@ public class CheckoutSolution {
 
   CheckoutInterface value = (x) -> {
     int total,aPrice,bPrice,hPrice,kPrice,pPrice,qPrice,vPrice,sPrice,tPrice,xPrice,yPrice,zPrice=0;
+    char[] offerComb = {'S','T','X','Y','Z'};
     String regex = "^[A-Z]+$";
     boolean match = Pattern.matches(regex,x);
     if(match || x.length()==0){
@@ -23,6 +24,28 @@ public class CheckoutSolution {
         } else {
           map.put(c, 1);
         }
+      }
+      
+      int countComb=0;
+      int j=0;
+      char[] comb = new char[offerComb.length];
+      char[] combThree= new char[3];
+      for(char i : offerComb){
+        if(map.get(i)!=0){
+          countComb++;
+          comb[j]=i;
+          j++;
+        }
+      }
+      
+      if(countComb>3){
+    	  for(int k=0;k<3;k++){
+          combThree[k]=comb[k];
+    	  }
+      
+      for(char l : combThree){
+        map.put(l,map.get(l)-1);
+      }
       }
 
       int countA = map.get('A') !=null ? map.get('A'):0;
@@ -51,7 +74,8 @@ public class CheckoutSolution {
       int countX =map.get('X') != null ? map.get('X') :0;
       int countY =map.get('Y') != null ? map.get('Y') :0;
       int countZ =map.get('Z') != null ? map.get('Z') :0;
-
+      
+      
       //Count item B: for 2E get one B free
       countB=getFreeDeal(countE,2,countB);
 
@@ -101,7 +125,7 @@ public class CheckoutSolution {
       vPrice=getItemPrice(countV,50,2,90,3,130);
 
       total = aPrice + bPrice + countC*20 + countD*15+ countE*40+ countF*10+ countG*20+hPrice+ countI*35 + countJ*60+ +kPrice+ countL*90
-          + countM*15 +countN*40+ countO*10 +pPrice+qPrice+ countR*50+sPrice + tPrice +countU*40 +vPrice+countW*20 + xPrice + yPrice + zPrice;
+          + countM*15 +countN*40+ countO*10 +pPrice+qPrice+ countR*50+sPrice + tPrice +countU*40 +vPrice+countW*20 + xPrice + yPrice + zPrice+(countComb>=3?(countComb/3)*45 : 0);
       return total;
     } else {
       return -1;  
@@ -174,3 +198,4 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 }
+
