@@ -1,11 +1,14 @@
 package befaster.solutions.CHK;
 
+import static java.util.Map.Entry.comparingByValue;
+import static java.util.stream.Collectors.toMap;
+
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
-import static java.util.stream.Collectors.*;
-import static java.util.Map.Entry.*;
 
 interface CheckoutInterface {
   int checkOut(String val);
@@ -57,7 +60,7 @@ public class CheckoutSolution {
     	  map2.put(comb[i],map1.get(comb[i]) );
       }
       
-      Map<Character, Integer> sorted = map2
+      Map<Character, Integer> sortMap= map2
     	        .entrySet()
     	        .stream()
     	        .sorted(comparingByValue())
@@ -65,15 +68,16 @@ public class CheckoutSolution {
     	            toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
     	                LinkedHashMap::new));
       
-     /* Map<Character,Integer> sortMap = new TreeMap<Character,Integer>(map2);
-      Set set = sortMap.entrySet();
-      Iterator iter = set.iterator();
+     /* Map<Character,Integer> sortMap = new TreeMap<Character,Integer>(map2);*/
+      Set<?> set = sortMap.entrySet();
+      Iterator<?> iter = set.iterator();
       int cnt=0;
       while(iter.hasNext()){
-    	  Map.Entry me = (Map.Entry)iter.next();
+    	  @SuppressWarnings("rawtypes")
+		Map.Entry me = (Map.Entry)iter.next();
     	  comb2[cnt]=(char) me.getValue();
     	  cnt++;
-      }*/
+      }
       
       
       
@@ -245,3 +249,4 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXS"));
   }
 }
+
