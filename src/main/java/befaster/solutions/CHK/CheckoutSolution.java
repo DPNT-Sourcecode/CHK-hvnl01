@@ -57,9 +57,9 @@ public class CheckoutSolution {
       
       Map<Character,Integer> map2 = new HashMap<>();
       for(int i=0;i<comb.length;i++){
-    	  if(comb[i]!=' '){
+    	  //if(comb[i]){
     	  map2.put(comb[i],map1.get(comb[i]) );
-    	  }
+    	  //}
       }
       
      /* HashMap<Character,Integer> sortMap = sortHashMapByValue((HashMap<Character, Integer>) map2);
@@ -271,3 +271,4 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("AAAAAPPPPPUUUUEEBRRRQAAAHHHHHHHHHHKKVVVBBNNNMFFFQQQVVHHHHHSTX"));
   }
 }
+
