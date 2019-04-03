@@ -269,5 +269,3 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXS"));
   }
 }
-
-
