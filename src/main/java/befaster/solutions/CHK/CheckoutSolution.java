@@ -1,8 +1,10 @@
 package befaster.solutions.CHK;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.regex.Pattern;
 
 interface CheckoutInterface {
@@ -37,6 +39,7 @@ public class CheckoutSolution {
       int countComb=0;
       int j=0;
       char[] comb = new char[x.length()];
+      char[] comb2 = new char[x.length()];
       
       for(char i : offerComb){
     	  int count =map.get(i) !=null ? map.get(i):0;
@@ -49,21 +52,32 @@ public class CheckoutSolution {
         }
       }
       
-      HashMap<Character,Integer> map2 = new HashMap<>();
+      HashMap<Integer,Character> map2 = new HashMap<>();
       for(int i=0;i<comb.length;i++){
-    	  map2.put(comb[0], );
-    	  
+    	  map2.put(map1.get(comb[i]),comb[i] );
       }
       
+      Map<Integer,Character> sortMap = new TreeMap<Integer, Character>(map2);
+      Set set = sortMap.entrySet();
+      Iterator iter = set.iterator();
+      int cnt=0;
+      while(iter.hasNext()){
+    	  Map.Entry me = (Map.Entry)iter.next();
+    	  comb2[cnt]=(char) me.getValue();
+    	  cnt++;
+      }
+      
+      
+      
       if(countComb>2 && countComb%3==0){
-        for(char l : comb){
+        for(char l : comb2){
         map.put(l,map.get(l)-1);
        }
       }
       if(countComb>2 && countComb%3!=0) 
         {
     	  for(int k =0 ; k<(countComb%3)*3;k++ ) {
-    		     map.put(comb[k],map.get(comb[k])-1);
+    		     map.put(comb2[k],map.get(comb2[k])-1);
     		  
     	  }
       }
@@ -223,4 +237,5 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXS"));
   }
 }
+
 
