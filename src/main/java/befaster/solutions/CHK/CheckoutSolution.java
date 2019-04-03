@@ -48,7 +48,9 @@ public class CheckoutSolution {
         for(char l : comb){
         map.put(l,map.get(l)-1);
        }
-      }else {
+      }
+      if(countComb>2 && countComb%3!=0) 
+        {
     	  for(int k =0 ; k<(countComb%3)*3;k++ ) {
     		     map.put(comb[k],map.get(comb[k])-1);
     		  
@@ -210,4 +212,5 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXS"));
   }
 }
+
 
