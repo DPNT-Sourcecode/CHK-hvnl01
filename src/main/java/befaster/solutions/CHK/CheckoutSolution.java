@@ -80,6 +80,7 @@ public class CheckoutSolution {
       
       if(countComb>2 && countComb%3==0){
         for(char l : comb){
+        	
         	if(l=='S'||l=='T'||l=='X'||l=='Y'||l=='Z'){
         map.put(l,map.get(l)-1<0?0:map.get(l)-1);
         	}
@@ -274,3 +275,4 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("SSSZ"));
   }
 }
+
