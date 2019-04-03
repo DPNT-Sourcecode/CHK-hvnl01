@@ -60,9 +60,7 @@ public class CheckoutSolution {
     	  map2.put(comb[i],map1.get(comb[i]) );
       }
       
-      HashMap<Character,Integer> sortMap = sortHashMapByValue((HashMap<Character, Integer>) map2);
-      
-     /* Map<Character,Integer> sortMap = new TreeMap<Character,Integer>(map2);*/
+     /* HashMap<Character,Integer> sortMap = sortHashMapByValue((HashMap<Character, Integer>) map2);
       Set<?> set = sortMap.entrySet();
       Iterator<?> iter = set.iterator();
       int cnt=0;
@@ -71,7 +69,7 @@ public class CheckoutSolution {
 		Map.Entry me = (Map.Entry)iter.next();
     	  comb2[cnt]=(char) me.getValue();
     	  cnt++;
-      }
+      }*/
       
       
       
@@ -269,3 +267,4 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXS"));
   }
 }
+
