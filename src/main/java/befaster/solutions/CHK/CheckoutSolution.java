@@ -76,14 +76,14 @@ public class CheckoutSolution {
       
       
       if(countComb>2 && countComb%3==0){
-        for(char l : comb2){
+        for(char l : comb){
         map.put(l,map.get(l)-1);
        }
       }
       if(countComb>2 && countComb%3!=0) 
         {
     	  for(int k =0 ; k<(countComb%3)*3;k++ ) {
-    		     map.put(comb2[k],map.get(comb2[k])-1);
+    		     map.put(comb[k],map.get(comb[k])-1);
     		  
     	  }
       }
@@ -269,3 +269,4 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXS"));
   }
 }
+
