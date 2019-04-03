@@ -1,11 +1,11 @@
 package befaster.solutions.CHK;
 
-import static java.util.Map.Entry.comparingByValue;
-import static java.util.stream.Collectors.toMap;
-
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -60,13 +60,7 @@ public class CheckoutSolution {
     	  map2.put(comb[i],map1.get(comb[i]) );
       }
       
-      Map<Character, Integer> sortMap= map2
-    	        .entrySet()
-    	        .stream()
-    	        .sorted(comparingByValue())
-    	        .collect(
-    	            toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
-    	                LinkedHashMap::new));
+      HashMap<Character,Integer> sortMap = sortHashMapByValue((HashMap<Character, Integer>) map2);
       
      /* Map<Character,Integer> sortMap = new TreeMap<Character,Integer>(map2);*/
       Set<?> set = sortMap.entrySet();
@@ -240,6 +234,32 @@ public class CheckoutSolution {
     }
     return count;
   }
+  
+  public LinkedHashMap<Character,Integer> sortHashMapByValue(HashMap<Character,Integer>map2){
+    List<Character> mapKeys = new ArrayList<>(map2.keySet());
+    List<Integer> mapValues = new ArrayList<>(map2.values());
+    Collections.sort(mapValues);
+    Collections.sort(mapKeys);
+    
+    LinkedHashMap<Character,Integer> sortedMap= new LinkedHashMap<Character,Integer>();
+    
+    Iterator<Integer> valueIt = mapValues.iterator();
+    while(valueIt.hasNext()) {
+      int val = valueIt.next();
+      Iterator<Character> keyIt = mapKeys.iterator();
+      while(keyIt.hasNext()) {
+    	  Character key = keyIt.next();
+    	  Integer comp1 = map2.get(key);
+    	  Integer comp2= val;
+    	  if(comp1.equals(comp2)){
+    		  keyIt.remove();
+    		  sortedMap.put(key, val);
+    		  break;
+    	  }
+      }
+    }
+    return sortedMap;
+  }
   public int checkout(String skus) {
     return value.checkOut(skus);
   }
@@ -249,4 +269,5 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXS"));
   }
 }
+
 
