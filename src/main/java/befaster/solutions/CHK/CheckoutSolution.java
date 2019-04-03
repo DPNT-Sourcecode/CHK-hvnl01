@@ -1,11 +1,11 @@
 package befaster.solutions.CHK;
 
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 import java.util.regex.Pattern;
+import static java.util.stream.Collectors.*;
+import static java.util.Map.Entry.*;
 
 interface CheckoutInterface {
   int checkOut(String val);
@@ -52,12 +52,20 @@ public class CheckoutSolution {
         }
       }
       
-      HashMap<Integer,Character> map2 = new HashMap<>();
+      Map<Character,Integer> map2 = new HashMap<>();
       for(int i=0;i<comb.length;i++){
-    	  map2.put(map1.get(comb[i]),comb[i] );
+    	  map2.put(comb[i],map1.get(comb[i]) );
       }
       
-      Map<Integer,Character> sortMap = new TreeMap<Integer, Character>(map2);
+      Map<Character, Integer> sorted = map2
+    	        .entrySet()
+    	        .stream()
+    	        .sorted(comparingByValue())
+    	        .collect(
+    	            toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
+    	                LinkedHashMap::new));
+      
+     /* Map<Character,Integer> sortMap = new TreeMap<Character,Integer>(map2);
       Set set = sortMap.entrySet();
       Iterator iter = set.iterator();
       int cnt=0;
@@ -65,7 +73,7 @@ public class CheckoutSolution {
     	  Map.Entry me = (Map.Entry)iter.next();
     	  comb2[cnt]=(char) me.getValue();
     	  cnt++;
-      }
+      }*/
       
       
       
