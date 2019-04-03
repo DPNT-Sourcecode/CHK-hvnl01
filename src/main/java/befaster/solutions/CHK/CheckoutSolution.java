@@ -42,6 +42,9 @@ public class CheckoutSolution {
       int countComb=0;
       int j=0;
       char[] comb = new char[x.length()];
+      for(int i=0;i<x.length();i++){
+    	  comb[i]= x.charAt(i);
+      }
       char[] comb2 = new char[x.length()];
       
       for(char i : offerComb){
@@ -57,9 +60,9 @@ public class CheckoutSolution {
       
       Map<Character,Integer> map2 = new HashMap<>();
       for(int i=0;i<comb.length;i++){
-    	  //if(comb[i]){
+    	  if(comb[i]=='S'||comb[i]=='T'||comb[i]=='X'||comb[i]=='Y'||comb[i]=='Z'){
     	  map2.put(comb[i],map1.get(comb[i]) );
-    	  //}
+    	  }
       }
       
      /* HashMap<Character,Integer> sortMap = sortHashMapByValue((HashMap<Character, Integer>) map2);
@@ -271,4 +274,5 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("AAAAAPPPPPUUUUEEBRRRQAAAHHHHHHHHHHKKVVVBBNNNMFFFQQQVVHHHHHSTX"));
   }
 }
+
 
