@@ -45,7 +45,7 @@ public class CheckoutSolution {
       for(int i=0;i<x.length();i++){
     	  comb[i]= x.charAt(i);
       }
-      char[] comb2 = new char[x.length()];
+      //char[] comb2 = new char[x.length()];
       
       for(char i : offerComb){
     	  int count =map.get(i) !=null ? map.get(i):0;
@@ -271,6 +271,7 @@ public class CheckoutSolution {
   
  public static void main(String arg[]){
 	  CheckoutSolution v = new CheckoutSolution();
-	  System.out.println(v.checkout("AAAAAPPPPPUUUUEEBRRRQAAAHHHHHHHHHHKKVVVBBNNNMFFFQQQVVHHHHHSTX"));
+	  System.out.println(v.checkout("SSSZ"));
   }
 }
+
