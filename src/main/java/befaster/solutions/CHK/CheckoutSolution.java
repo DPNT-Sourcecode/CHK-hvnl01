@@ -13,7 +13,12 @@ public class CheckoutSolution {
 
   CheckoutInterface value = (x) -> {
     int total,aPrice,bPrice,hPrice,kPrice,pPrice,qPrice,vPrice,sPrice,tPrice,xPrice,yPrice,zPrice=0;
-    List<Character> list = new ArrayList<Character>();
+    HashMap<Character,Integer> map1 = new HashMap<>();
+    map1.put('S', 20);
+    map1.put('T', 20);
+    map1.put('X', 17);
+    map1.put('Y', 20);
+    map1.put('Z', 21);
     char[] offerComb = {'S','T','X','Y','Z'};
     String regex = "^[A-Z]+$";
     boolean match = Pattern.matches(regex,x);
@@ -42,6 +47,12 @@ public class CheckoutSolution {
           j++;
           }
         }
+      }
+      
+      HashMap<Character,Integer> map2 = new HashMap<>();
+      for(int i=0;i<comb.length;i++){
+    	  map2.put(comb[0], );
+    	  
       }
       
       if(countComb>2 && countComb%3==0){
@@ -212,3 +223,4 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("STXS"));
   }
 }
+
