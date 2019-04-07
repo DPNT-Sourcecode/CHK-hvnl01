@@ -14,6 +14,10 @@ interface CheckoutInterface {
   int checkOut(String val);
 }
 
+/**
+ * @author Admin
+ *
+ */
 public class CheckoutSolution {
 
   CheckoutInterface value = (x) -> {
@@ -264,10 +268,11 @@ public class CheckoutSolution {
     return value.checkOut(skus);
   }
 
-  public static void main(String arg[]){
+  /*public static void main(String arg[]){
     CheckoutSolution v = new CheckoutSolution();
     System.out.println(v.checkout("CXYZYZC"));
-  }
+  }*/
 }
+
 
 
