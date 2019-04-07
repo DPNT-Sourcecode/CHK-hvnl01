@@ -45,17 +45,7 @@ public class CheckoutSolution {
       for(int i=0;i<x.length();i++){
     	  comb[i]= x.charAt(i);
       }
-      List<ItemBasket> list = new ArrayList<>();
-      for(char i : comb){
-      list.add(new ItemBasket(i,map1.get(i)));
-      }
       
-      Collections.sort(list, Collections.reverseOrder());
-      int cnt1=0;
-      for(ItemBasket i : list){
-    	  comb[cnt1] = i.item;
-    	  cnt1++;
-      }
       
       for(char i : offerComb){
     	  int count =map.get(i) !=null ? map.get(i):0;
@@ -66,6 +56,18 @@ public class CheckoutSolution {
           j++;
           }
         }
+      }
+      
+      List<ItemBasket> list = new ArrayList<>();
+      for(char i : comb){
+      list.add(new ItemBasket(i,map1.get(i)));
+      }
+      
+      Collections.sort(list, Collections.reverseOrder());
+      int cnt1=0;
+      for(ItemBasket i : list){
+    	  comb[cnt1] = i.item;
+    	  cnt1++;
       }
       
      /* Map<Character,Integer> map2 = new HashMap<>();
@@ -285,4 +287,3 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("SSSZ"));
   }
 }
-
