@@ -46,6 +46,7 @@ public class CheckoutSolution {
         comb[i]= x.charAt(i);
       }
 
+      //List of item eligible to make offer combination - buy any 3 of (S,T,X,Y,Z) for 45
       List<Character> combList = new ArrayList<>();
       for(char i : offerComb){
         int count =map.get(i) !=null ? map.get(i):0;
@@ -57,6 +58,7 @@ public class CheckoutSolution {
         }
       }
       
+      //Sort the list of offer item -buy any 3 of (S,T,X,Y,Z) for 45
       List<Character> sortCombList = new ArrayList<>();
       if(countComb>0){
         List<ItemBasket> list = new ArrayList<>();
@@ -65,20 +67,14 @@ public class CheckoutSolution {
             list.add(new ItemBasket(i,map1.get(i)));
           }
         }
-
         Collections.sort(list, Collections.reverseOrder());
-
-        int cnt1=0;
         for(ItemBasket i : list){
           sortCombList.add(i.item);
-          comb[cnt1] = i.item;
-          cnt1++;
         }
       }
 
       if(countComb>2 && countComb%3==0){
         for(char l : sortCombList){
-
           if(l=='S'||l=='T'||l=='X'||l=='Y'||l=='Z'){
             map.put(l,map.get(l)-1<0?0:map.get(l)-1);
           }
@@ -273,3 +269,4 @@ public class CheckoutSolution {
     System.out.println(v.checkout("CXYZYZC"));
   }
 }
+
