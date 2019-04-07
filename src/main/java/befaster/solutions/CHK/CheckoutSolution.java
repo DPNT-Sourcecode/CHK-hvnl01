@@ -46,6 +46,7 @@ public class CheckoutSolution {
     	  comb[i]= x.charAt(i);
       }
       
+      List<Character> list2 = new ArrayList<>();
       
       for(char i : offerComb){
     	  int count =map.get(i) !=null ? map.get(i):0;
@@ -53,11 +54,12 @@ public class CheckoutSolution {
           countComb+=count;
           for(int k=0;k<count;k++){
           comb[j]=i;
+          list2.add(i);
           j++;
           }
         }
       }
-      
+      Object[] comb2 = list2.toArray();
       if(countComb>0){
       List<ItemBasket> list = new ArrayList<>();
       for(char i : comb){
@@ -290,3 +292,4 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("CXYZYZC"));
   }
 }
+
