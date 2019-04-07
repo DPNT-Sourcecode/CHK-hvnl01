@@ -58,6 +58,7 @@ public class CheckoutSolution {
         }
       }
       
+      if(countComb>0){
       List<ItemBasket> list = new ArrayList<>();
       for(char i : comb){
       list.add(new ItemBasket(i,map1.get(i)));
@@ -69,7 +70,7 @@ public class CheckoutSolution {
     	  comb[cnt1] = i.item;
     	  cnt1++;
       }
-      
+      }
      /* Map<Character,Integer> map2 = new HashMap<>();
       for(int i=0;i<comb.length;i++){
     	  if(comb[i]=='S'||comb[i]=='T'||comb[i]=='X'||comb[i]=='Y'||comb[i]=='Z'){
@@ -287,4 +288,5 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("A"));
   }
 }
+
 
