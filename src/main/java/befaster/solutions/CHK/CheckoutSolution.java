@@ -18,16 +18,17 @@ public class CheckoutSolution {
 
   CheckoutInterface value = (x) -> {
     int total,aPrice,bPrice,hPrice,kPrice,pPrice,qPrice,vPrice,sPrice,tPrice,xPrice,yPrice,zPrice=0;
-    HashMap<Character,Integer> itemsCountMap = new HashMap<>();
-    itemsCountMap.put('S', 20);
-    itemsCountMap.put('T', 20);
-    itemsCountMap.put('X', 17);
-    itemsCountMap.put('Y', 20);
-    itemsCountMap.put('Z', 21);
+    HashMap<Character,Integer> map1 = new HashMap<>();
+    map1.put('S', 20);
+    map1.put('T', 20);
+    map1.put('X', 17);
+    map1.put('Y', 20);
+    map1.put('Z', 21);
     char[] offerComb = {'S','T','X','Y','Z'};
     String regex = "^[A-Z]+$";
     boolean match = Pattern.matches(regex,x);
     if(match || x.length()==0){
+      //Collection Map for number of item 
       HashMap<Character, Integer> map = new HashMap<Character, Integer>();
       for(int i = 0; i< x.length(); i++){
         char c = x.charAt(i);
@@ -40,32 +41,28 @@ public class CheckoutSolution {
       }
 
       int countComb=0;
-      int j=0;
       char[] comb = new char[x.length()];
       for(int i=0;i<x.length();i++){
         comb[i]= x.charAt(i);
       }
 
-      List<Character> list2 = new ArrayList<>();
-
+      List<Character> combList = new ArrayList<>();
       for(char i : offerComb){
         int count =map.get(i) !=null ? map.get(i):0;
         if(count!=0){
           countComb+=count;
           for(int k=0;k<count;k++){
-            comb[j]=i;
-            list2.add(i);
-            j++;
+            combList.add(i);
           }
         }
       }
-      Object[] comb2 = list2.toArray();
-      List<Character> list3 = new ArrayList<>();
+      
+      List<Character> sortCombList = new ArrayList<>();
       if(countComb>0){
         List<ItemBasket> list = new ArrayList<>();
-        for(char i : list2){
+        for(char i : combList){
           if(i=='S'||i=='T'||i=='X'||i=='Y'||i=='Z'){
-            list.add(new ItemBasket(i,itemsCountMap.get(i)));
+            list.add(new ItemBasket(i,map1.get(i)));
           }
         }
 
@@ -73,14 +70,14 @@ public class CheckoutSolution {
 
         int cnt1=0;
         for(ItemBasket i : list){
-          list3.add(i.item);
+          sortCombList.add(i.item);
           comb[cnt1] = i.item;
           cnt1++;
         }
       }
 
       if(countComb>2 && countComb%3==0){
-        for(char l : list3){
+        for(char l : sortCombList){
 
           if(l=='S'||l=='T'||l=='X'||l=='Y'||l=='Z'){
             map.put(l,map.get(l)-1<0?0:map.get(l)-1);
@@ -90,7 +87,7 @@ public class CheckoutSolution {
       if(countComb>2 && countComb%3!=0) 
       {
         for(int k =0 ; k<(countComb/3)*3;k++ ) {
-          map.put(list3.get(k),map.get(list3.get(k))-1);
+          map.put(sortCombList.get(k),map.get(sortCombList.get(k))-1);
 
         }
       }
@@ -276,8 +273,3 @@ public class CheckoutSolution {
     System.out.println(v.checkout("CXYZYZC"));
   }
 }
-
-
-
-
-
