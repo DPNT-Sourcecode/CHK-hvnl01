@@ -38,80 +38,61 @@ public class CheckoutSolution {
           map.put(c, 1);
         }
       }
-      
+
       int countComb=0;
       int j=0;
       char[] comb = new char[x.length()];
       for(int i=0;i<x.length();i++){
-    	  comb[i]= x.charAt(i);
+        comb[i]= x.charAt(i);
       }
-      
+
       List<Character> list2 = new ArrayList<>();
-      
+
       for(char i : offerComb){
-    	  int count =map.get(i) !=null ? map.get(i):0;
+        int count =map.get(i) !=null ? map.get(i):0;
         if(count!=0){
           countComb+=count;
           for(int k=0;k<count;k++){
-          comb[j]=i;
-          list2.add(i);
-          j++;
+            comb[j]=i;
+            list2.add(i);
+            j++;
           }
         }
       }
       Object[] comb2 = list2.toArray();
       List<Character> list3 = new ArrayList<>();
       if(countComb>0){
-      List<ItemBasket> list = new ArrayList<>();
-      for(char i : list2){
-    	  if(i=='S'||i=='T'||i=='X'||i=='Y'||i=='Z'){
-      list.add(new ItemBasket(i,map1.get(i)));
-    	  }
+        List<ItemBasket> list = new ArrayList<>();
+        for(char i : list2){
+          if(i=='S'||i=='T'||i=='X'||i=='Y'||i=='Z'){
+            list.add(new ItemBasket(i,map1.get(i)));
+          }
+        }
+
+        Collections.sort(list, Collections.reverseOrder());
+
+        int cnt1=0;
+        for(ItemBasket i : list){
+          list3.add(i.item);
+          comb[cnt1] = i.item;
+          cnt1++;
+        }
       }
-      
-      Collections.sort(list, Collections.reverseOrder());
-      
-      int cnt1=0;
-      for(ItemBasket i : list){
-    	  list3.add(i.item);
-    	  comb[cnt1] = i.item;
-    	  cnt1++;
-      }
-      }
-     /* Map<Character,Integer> map2 = new HashMap<>();
-      for(int i=0;i<comb.length;i++){
-    	  if(comb[i]=='S'||comb[i]=='T'||comb[i]=='X'||comb[i]=='Y'||comb[i]=='Z'){
-    	  map2.put(comb[i],map1.get(comb[i]) );
-    	  }
-      }*/
-      
-     /* HashMap<Character,Integer> sortMap = sortHashMapByValue((HashMap<Character, Integer>) map2);
-      Set<?> set = sortMap.entrySet();
-      Iterator<?> iter = set.iterator();
-      int cnt=0;
-      while(iter.hasNext()){
-    	  @SuppressWarnings("rawtypes")
-		Map.Entry me = (Map.Entry)iter.next();
-    	  comb2[cnt]=(char) me.getValue();
-    	  cnt++;
-      }*/
-      
-      
-      
+
       if(countComb>2 && countComb%3==0){
         for(char l : list3){
-        	
-        	if(l=='S'||l=='T'||l=='X'||l=='Y'||l=='Z'){
-        map.put(l,map.get(l)-1<0?0:map.get(l)-1);
-        	}
+
+          if(l=='S'||l=='T'||l=='X'||l=='Y'||l=='Z'){
+            map.put(l,map.get(l)-1<0?0:map.get(l)-1);
+          }
         }       
       }
       if(countComb>2 && countComb%3!=0) 
-        {
-    	  for(int k =0 ; k<(countComb%3)*3;k++ ) {
-    		     map.put(list3.get(k),map.get(list3.get(k))-1);
-    		  
-    	  }
+      {
+        for(int k =0 ; k<(countComb/3)*3;k++ ) {
+          map.put(list3.get(k),map.get(list3.get(k))-1);
+
+        }
       }
 
       int countA = map.get('A') !=null ? map.get('A'):0;
@@ -140,8 +121,8 @@ public class CheckoutSolution {
       int countX =map.get('X') != null ? map.get('X') :0;
       int countY =map.get('Y') != null ? map.get('Y') :0;
       int countZ =map.get('Z') != null ? map.get('Z') :0;
-      
-      
+
+
       //Count item B: for 2E get one B free
       countB=getFreeDeal(countE,2,countB);
 
@@ -179,7 +160,7 @@ public class CheckoutSolution {
 
       //Cost of Q item: Q|30| 3Q for 80
       qPrice=getItemPrice(countQ,30,3,80);
-      
+
       //buy any 3 of (S,T,X,Y,Z) for 45
       sPrice = getItemPrice(countS,20,3,45);
       tPrice = getItemPrice(countT,20,3,45);
@@ -197,8 +178,8 @@ public class CheckoutSolution {
       return -1;  
     }
   };
-  
- public int getItemPrice(int count,int value,int firstCond, int value1, int secCond, int value2){
+
+  public int getItemPrice(int count,int value,int firstCond, int value1, int secCond, int value2){
     int remVal=0;
     int price=0;
     if(count%secCond !=0  ) {
@@ -260,28 +241,28 @@ public class CheckoutSolution {
     }
     return count;
   }
-  
+
   public LinkedHashMap<Character,Integer> sortHashMapByValue(HashMap<Character,Integer>map2){
     List<Character> mapKeys = new ArrayList<>(map2.keySet());
     List<Integer> mapValues = new ArrayList<>(map2.values());
     Collections.sort(mapValues);
     Collections.sort(mapKeys);
-    
+
     LinkedHashMap<Character,Integer> sortedMap= new LinkedHashMap<Character,Integer>();
-    
+
     Iterator<Integer> valueIt = mapValues.iterator();
     while(valueIt.hasNext()) {
       int val = valueIt.next();
       Iterator<Character> keyIt = mapKeys.iterator();
       while(keyIt.hasNext()) {
-    	  Character key = keyIt.next();
-    	  Integer comp1 = map2.get(key);
-    	  Integer comp2= val;
-    	  if(comp1.equals(comp2)){
-    		  keyIt.remove();
-    		  sortedMap.put(key, val);
-    		  break;
-    	  }
+        Character key = keyIt.next();
+        Integer comp1 = map2.get(key);
+        Integer comp2= val;
+        if(comp1.equals(comp2)){
+          keyIt.remove();
+          sortedMap.put(key, val);
+          break;
+        }
       }
     }
     return sortedMap;
@@ -289,12 +270,13 @@ public class CheckoutSolution {
   public int checkout(String skus) {
     return value.checkOut(skus);
   }
-  
- public static void main(String arg[]){
-	  CheckoutSolution v = new CheckoutSolution();
-	  System.out.println(v.checkout("CXYZYZC"));
+
+  public static void main(String arg[]){
+    CheckoutSolution v = new CheckoutSolution();
+    System.out.println(v.checkout("CXYZYZC"));
   }
 }
+
 
 
 
