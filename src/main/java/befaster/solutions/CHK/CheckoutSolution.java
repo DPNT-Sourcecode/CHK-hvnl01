@@ -61,7 +61,9 @@ public class CheckoutSolution {
       if(countComb>0){
       List<ItemBasket> list = new ArrayList<>();
       for(char i : comb){
+    	  if(i=='S'||i=='T'||i=='X'||i=='Y'||i=='Z'){
       list.add(new ItemBasket(i,map1.get(i)));
+    	  }
       }
       
       Collections.sort(list, Collections.reverseOrder());
@@ -288,6 +290,7 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("ABCDEFGHIJKLMNOPQRSTUVW"));
   }
 }
+
 
 
 
