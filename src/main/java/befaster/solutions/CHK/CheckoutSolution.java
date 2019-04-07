@@ -18,12 +18,12 @@ public class CheckoutSolution {
 
   CheckoutInterface value = (x) -> {
     int total,aPrice,bPrice,hPrice,kPrice,pPrice,qPrice,vPrice,sPrice,tPrice,xPrice,yPrice,zPrice=0;
-    HashMap<Character,Integer> map1 = new HashMap<>();
-    map1.put('S', 20);
-    map1.put('T', 20);
-    map1.put('X', 17);
-    map1.put('Y', 20);
-    map1.put('Z', 21);
+    HashMap<Character,Integer> itemsCountMap = new HashMap<>();
+    itemsCountMap.put('S', 20);
+    itemsCountMap.put('T', 20);
+    itemsCountMap.put('X', 17);
+    itemsCountMap.put('Y', 20);
+    itemsCountMap.put('Z', 21);
     char[] offerComb = {'S','T','X','Y','Z'};
     String regex = "^[A-Z]+$";
     boolean match = Pattern.matches(regex,x);
@@ -65,7 +65,7 @@ public class CheckoutSolution {
         List<ItemBasket> list = new ArrayList<>();
         for(char i : list2){
           if(i=='S'||i=='T'||i=='X'||i=='Y'||i=='Z'){
-            list.add(new ItemBasket(i,map1.get(i)));
+            list.add(new ItemBasket(i,itemsCountMap.get(i)));
           }
         }
 
@@ -276,6 +276,7 @@ public class CheckoutSolution {
     System.out.println(v.checkout("CXYZYZC"));
   }
 }
+
 
 
 
