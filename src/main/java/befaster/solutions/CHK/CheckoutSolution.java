@@ -40,7 +40,7 @@ public class CheckoutSolution {
         }
       }
 
-      int countComb=0;
+      int countComb=0;// Count of offer item like (S,T,X,Y,Z)
       char[] comb = new char[x.length()];
       for(int i=0;i<x.length();i++){
         comb[i]= x.charAt(i);
@@ -73,6 +73,7 @@ public class CheckoutSolution {
         }
       }
 
+      //Update the count of item after grouping the item based on offer
       if(countComb>2 && countComb%3==0){
         for(char l : sortCombList){
           if(l=='S'||l=='T'||l=='X'||l=='Y'||l=='Z'){
@@ -84,7 +85,6 @@ public class CheckoutSolution {
       {
         for(int k =0 ; k<(countComb/3)*3;k++ ) {
           map.put(sortCombList.get(k),map.get(sortCombList.get(k))-1);
-
         }
       }
 
@@ -269,4 +269,5 @@ public class CheckoutSolution {
     System.out.println(v.checkout("CXYZYZC"));
   }
 }
+
 
