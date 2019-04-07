@@ -3,10 +3,10 @@ package befaster.solutions.CHK;
 import java.util.jar.Attributes.Name;
 
 public class ItemBasket implements Comparable<ItemBasket>{
-    String item;
+    char item;
     double price;
 	
-	public ItemBasket(String item, double price) {
+	public ItemBasket(char item, double price) {
 		super();
 		this.item = item;
 		this.price = price;
@@ -22,7 +22,8 @@ public class ItemBasket implements Comparable<ItemBasket>{
 			return c;
 		}
 			
-		return item.compareTo(o.item);
+		return c;
 	}
 
 }
+
