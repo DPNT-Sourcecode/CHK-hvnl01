@@ -109,7 +109,7 @@ public class CheckoutSolution {
       if(countComb>2 && countComb%3!=0) 
         {
     	  for(int k =0 ; k<(countComb%3)*3;k++ ) {
-    		     map.put(comb[k],map.get(comb[k])-1);
+    		     map.put(list3.get(k),map.get(list3.get(k))-1);
     		  
     	  }
       }
@@ -295,5 +295,6 @@ public class CheckoutSolution {
 	  System.out.println(v.checkout("CXYZYZC"));
   }
 }
+
 
 
